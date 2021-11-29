@@ -7,13 +7,15 @@ import java.time.LocalDateTime;
 @Table(name = "elf")
 public class Elf {
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String name;
-    @Transient
-    private String nameCamelCase;
+    private boolean retired;
+
+    @ManyToOne
+    private Santa santa;
 
     private LocalDateTime created;
 
@@ -31,14 +33,6 @@ public class Elf {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getNameCamelCase() {
-        return nameCamelCase;
-    }
-
-    public void setNameCamelCase(String nameCamelCase) {
-        this.nameCamelCase = nameCamelCase;
     }
 
     public LocalDateTime getCreated() {
