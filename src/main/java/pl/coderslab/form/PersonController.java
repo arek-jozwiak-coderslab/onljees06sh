@@ -22,11 +22,11 @@ public class PersonController {
         return "person/add";
     }
 //#2
-    @PostMapping("/add")
-    public String processForm(Person person) {
-        personDao.save(person);
-        return "person/add";
-    }
+//    @PostMapping("/add")
+//    public String processForm(Person person, @RequestParam("save1") String pdf) {
+//        personDao.save(person);
+//        return "person/add";
+//    }
 
 //#1
     @PostMapping("/add")
