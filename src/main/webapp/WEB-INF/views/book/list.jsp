@@ -20,8 +20,8 @@
             <td>${book.title}</td>
             <td>${book.publisher.name}</td>
             <td>
-                <a href="/book-form/delete?id=${book.id}">Usuń</a>
-                <a href="/book-form/edit?id=${book.id}">Edytuj</a>
+                <a href="/book-form/confirm/${book.id}">Usuń</a>
+                <a href="/book-form/update/${book.id}">Edytuj</a>
             </td>
         </tr>
     </c:forEach>

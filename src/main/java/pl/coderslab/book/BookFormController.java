@@ -3,6 +3,7 @@ package pl.coderslab.book;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -23,6 +24,18 @@ public class BookFormController {
         return "book/list";
     }
 
+    @GetMapping("/confirm/{id}")
+    public String confirm(@PathVariable long id, Model model) {
+        model.addAttribute("id", id);
+        return "book/confirm";
+    }
+
+    @GetMapping("/delete/{id}")
+    public String delete(@PathVariable long id) {
+        bookDao.delete(bookDao.findById(id));
+        return "redirect:/book-form/list";
+    }
+
 
     @GetMapping("/add")
     public String add(Model model) {
@@ -34,6 +47,20 @@ public class BookFormController {
     @PostMapping("/add")
     public String processForm(Book book) {
         bookDao.save(book);
+        return "redirect:/book-form/list";
+    }
+
+
+    @GetMapping("/update/{id}")
+    public String update(Model model, @PathVariable long id) {
+        model.addAttribute("publishers", publisherDao.getAll());
+        model.addAttribute("book", bookDao.findById(id));
+        return "book/update";
+    }
+
+    @PostMapping("/update/{id}")
+    public String processUpdate(Book book) {
+        bookDao.update(book);
         return "redirect:/book-form/list";
     }
 }

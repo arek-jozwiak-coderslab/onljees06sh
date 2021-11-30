@@ -7,7 +7,7 @@
     <title>Title</title>
 </head>
 <body>
-<form:form method="post" modelAttribute="book">
+<form:form method="post"  modelAttribute="book">
     <form:hidden path="id"/>
     <label>publisher
         <form:select itemValue="id" itemLabel="name" path="publisher" items="${publishers}"/>
