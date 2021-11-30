@@ -1,7 +1,9 @@
 package pl.coderslab.book;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
@@ -28,5 +30,12 @@ public class BookController {
         book.setPublisher(publisher);
         bookDao.save(book);
         return "added";
+    }
+
+
+    @PostMapping("/form/reset")
+    public String formResetPerform(@RequestParam String email){
+
+        return "/form/reset";
     }
 }
