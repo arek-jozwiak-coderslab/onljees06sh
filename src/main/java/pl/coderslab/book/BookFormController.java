@@ -15,14 +15,19 @@ import javax.validation.Valid;
 public class BookFormController {
     private final BookDao bookDao;
     private final PublisherDao publisherDao;
+    private final BookRepository bookRepository;
 
-    public BookFormController(BookDao bookDao, PublisherDao publisherDao) {
+    public BookFormController(BookDao bookDao, PublisherDao publisherDao, BookRepository bookRepository) {
         this.bookDao = bookDao;
         this.publisherDao = publisherDao;
+        this.bookRepository = bookRepository;
     }
 
     @GetMapping("/list")
     public String list(Model model) {
+
+
+
         model.addAttribute("books", bookDao.getAll());
         return "book/list";
     }
