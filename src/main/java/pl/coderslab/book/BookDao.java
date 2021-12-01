@@ -33,7 +33,8 @@ public class BookDao {
     }
 
     public List<Book> getAll() {
-        return entityManager.createQuery("select  b from Book b").getResultList();
+        return entityManager.createQuery("select  b from Book b order by b.id").
+                setMaxResults(5).getResultList();
     }
 
     public List<Book> findAllByRating(int rating) {

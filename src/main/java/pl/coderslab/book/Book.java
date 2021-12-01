@@ -8,6 +8,13 @@ import javax.validation.constraints.Size;
 
 @Entity
 public class Book {
+
+    @Override
+    public String toString() {
+        System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+        return "AAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -22,6 +29,17 @@ public class Book {
 
     @Max(2)
     private int pages;
+
+    public int getPages() {
+        return pages;
+    }
+
+    public void setPages(int pages) {
+        this.pages = pages;
+    }
+
+    @ManyToOne
+    private Category category;
 
     @ManyToOne
     @NotNull

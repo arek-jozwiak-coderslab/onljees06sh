@@ -1,9 +1,13 @@
 package pl.coderslab.book;
 
+import org.hibernate.validator.constraints.pl.NIP;
+import org.hibernate.validator.constraints.pl.REGON;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 public class Publisher {
@@ -12,7 +16,14 @@ public class Publisher {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank
     private String name;
+
+    @NIP
+    private String nip;
+
+    @REGON
+    private String regon;
 
     public Long getId() {
         return id;
